@@ -8,4 +8,3 @@
     - [ ] Ordenar resultado
 - [ ] Sortear nomes
 - [ ] Sortear amigo secreto
-- [ ] Sortear nomes
