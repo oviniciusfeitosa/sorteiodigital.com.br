@@ -4,7 +4,20 @@
                 text-xs-center
                 wrap>
             <v-flex xs12>
-                <h1>Em desenvolvimento.</h1>
+                <v-text-field
+                        type="number"
+                        label="De?"
+                        box
+                        v-model="numeroInicial"
+                ></v-text-field>
+                 -
+                <v-text-field
+                        type="number"
+                        label="Até?"
+                        box
+                        v-model="numeroFinal"
+                ></v-text-field>
+                    {{randomNumber()}}
             </v-flex>
 
         </v-layout>
@@ -13,7 +26,22 @@
 
 <script>
   export default {
-    data: () => ({})
+    data() {
+      return {
+        numeroInicial: '',
+        numeroFinal: '',
+      };
+    },
+    methods : {
+      randomNumber : function(){
+        if(this.numeroInicial != '' && this.numeroFinal != '') {
+            if(this.numeroInicial > this.numeroFinal) {
+                return Math.floor(Math.random() * (this.numeroFinal - this.numeroInicial + this.numeroInicial)) + this.numeroInicial;
+            }
+            return Math.floor(Math.random() * (this.numeroInicial - this.numeroFinal + this.numeroFinal)) + this.numeroFinal;
+        }
+      }
+    }
   }
 </script>
 
