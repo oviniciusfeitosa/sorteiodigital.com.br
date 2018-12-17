@@ -13,6 +13,7 @@ const routesObject = [
         path: '/',
         component: Home,
         name: 'home',
+        redirect: '/sortear-numeros',
         children: [
             {
                 path: '/sortear-numeros',
@@ -31,7 +32,7 @@ const routesObject = [
                 },
             },
             {
-                path: '/sortear-nomes',
+                path: '/sortear-amigo-secreto',
                 component: SorteadorDeAmigoSecreto,
                 name: 'SorteadorDeAmigoSecreto',
                 meta: {

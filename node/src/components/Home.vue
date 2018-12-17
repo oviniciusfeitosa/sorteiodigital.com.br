@@ -16,7 +16,7 @@
                         <v-icon>settings_system_daydream</v-icon>
                     </v-btn>
 
-                    <v-btn dark value="/sortear-nomes" to="/sortear-nomes">
+                    <v-btn dark value="/sortear-amigo-secreto" to="/sortear-amigo-secreto">
                         <span>Sortear Amigo Secreto</span>
                         <v-icon>chat</v-icon>
                     </v-btn>
@@ -40,13 +40,16 @@
 
         computed: {
             color() {
+              console.log(this.bottomNav)
                 switch (this.bottomNav) {
-                    case '/sortear-numeros':
-                        return 'blue-grey'
                     case '/sortear-nomes':
                         return 'brown'
-                    case '/sortear-nomes':
+                    case '/sortear-amigo-secreto':
                         return 'teal'
+                    case '/sortear-numeros':
+                        return 'blue-grey'
+                    default:
+                        return 'blue-grey'
                 }
             }
         }

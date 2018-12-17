@@ -2,13 +2,13 @@
   <v-app>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Sorteio Digital</span>
+        <span>{{titulo}}</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
 
     <v-content>
-      <Home></Home>
+        <router-view />
     </v-content>
   </v-app>
 </template>
@@ -23,7 +23,7 @@ export default {
   },
   data () {
     return {
-      //
+      titulo: 'Sorteio Digital'
     }
   }
 }
