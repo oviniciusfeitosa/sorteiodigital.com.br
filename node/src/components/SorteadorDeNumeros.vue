@@ -1,12 +1,8 @@
 <template>
     <v-container>
         <v-card-text>
-            <v-layout
-                    text-xs-center
-                    class="text-xs-center"
-                    wrap>
+            <v-layout align-center justify-center row fill-height>
                 <v-flex md1>
-                    De
                     <v-text-field
                             type="number"
                             label="De?"
@@ -17,18 +13,40 @@
                            inset
                            vertical></v-divider>
                 <v-flex md1>
-                    Até
                     <v-text-field type="number"
                                   label="Até?"
                                   box
                                   v-model="numeroFinal"></v-text-field>
                 </v-flex>
             </v-layout>
-            <v-flex md3>
-                <v-card-title primary-title v-if="numeroSorteado != '' && numeroSorteado != null">
-                    <div class="headline">O número sorteado foi: <b>{{numeroSorteado}}</b></div>
-                </v-card-title>
-            </v-flex>
+            <v-layout align-center justify-center row fill-height>
+                <v-btn color="success" @click="sortearNumeros()">Sortear</v-btn>
+            </v-layout>
+            <v-layout align-center
+                      justify-center
+                      row
+                      v-if="numeroSorteado != '' && numeroSorteado != null"
+                      fill-height>
+                <v-card>
+                    <v-container fluid grid-list-lg>
+                        <v-layout align-center justify-center row fill-height>
+                            <v-flex xs12>
+                                <v-card color="blue-grey darken-2" class="white--text">
+                                    <v-card-title primary-title>
+                                        <div>
+                                            <div class="headline">O número sorteado foi:</div>
+                                            <!--<span>Listen to your favorite artists and albums whenever and wherever, online and offline.</span>-->
+                                            <div class="headline">
+                                                <b>{{numeroSorteado}}</b>
+                                            </div>
+                                        </div>
+                                    </v-card-title>
+                                </v-card>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                </v-card>
+            </v-layout>
         </v-card-text>
     </v-container>
 </template>
@@ -42,24 +60,17 @@
         numeroSorteado: '',
       };
     },
-    watch: {
-      numeroInicial() {
-        this.numeroSorteado = this.sortearNumeros();
-      },
-      numeroFinal() {
-        this.numeroSorteado = this.sortearNumeros();
-      },
-    },
+    watch: {},
     methods: {
       sortearNumeros: function () {
-        this.numeroSorteado = '';
         if (this.numeroInicial != '' && this.numeroFinal != '') {
           let numeroInicial = parseInt(this.numeroInicial, 10);
           let numeroFinal = parseInt(this.numeroFinal);
           if (numeroInicial > numeroFinal) {
-            return this.randomizarNumeros(numeroFinal, numeroInicial);
+            this.numeroSorteado = this.randomizarNumeros(numeroFinal, numeroInicial);
+          } else {
+            this.numeroSorteado = this.randomizarNumeros(numeroInicial, numeroFinal);
           }
-          return this.randomizarNumeros(numeroInicial, numeroFinal);
         }
       },
       randomizarNumeros(valorMinimo, valorMaximo) {
