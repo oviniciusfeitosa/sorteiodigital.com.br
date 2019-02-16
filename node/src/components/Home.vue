@@ -1,69 +1,49 @@
 <template>
     <v-container fluid>
-
         <v-card>
-            <v-card-text heigth="300px">
-                <router-view />
+            <v-card-text>
+                <v-tabs slot="extension"
+                        dark
+                        v-model="model"
+                        centered
+                        color="blue"
+                        fixed-tabs
+                        grow>
+                    <v-tabs-slider color="yellow"></v-tabs-slider>
+                    <v-tab v-for="i in tabItems"
+                           :key="i.menuName"
+                           :to="`${i.menuLink}`">{{i.menuName}}
+                    </v-tab>
+                </v-tabs>
+
+                <router-view/>
             </v-card-text>
-            <v-toolbar light>
-                <v-bottom-nav
-                        :active.sync="bottomNav"
-                        :color="color"
-                        :value="true">
-                    <v-btn dark value="/sortear-numeros" to="/sortear-numeros">
-                        <span>Sortear Números</span>
-                        <v-icon>devices</v-icon>
-                    </v-btn>
-
-                    <v-btn dark value="/sortear-nomes" to="/sortear-nomes">
-                        <span>Sortear Nomes</span>
-                        <v-icon>settings_system_daydream</v-icon>
-                    </v-btn>
-
-                    <v-btn dark value="/sortear-amigo-secreto" to="/sortear-amigo-secreto">
-                        <span>Sortear Amigo Secreto</span>
-                        <v-icon>chat</v-icon>
-                    </v-btn>
-
-                </v-bottom-nav>
-            </v-toolbar>
-            <!--<v-expansion-panel popout>-->
-                <!--<v-expansion-panel-content-->
-                        <!--v-for="(item,i) in 5"-->
-                        <!--:key="i"-->
-                <!--&gt;-->
-                    <!--<div slot="header">Item</div>-->
-                    <!--<v-card>-->
-                        <!--<v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>-->
-                    <!--</v-card>-->
-                <!--</v-expansion-panel-content>-->
-            <!--</v-expansion-panel>-->
         </v-card>
     </v-container>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                bottomNav: '/sortear-numeros'
-            }
-        },
-
-        computed: {
-            color() {
-              console.log(this.bottomNav)
-                switch (this.bottomNav) {
-                    case '/sortear-nomes':
-                        return 'brown'
-                    case '/sortear-amigo-secreto':
-                        return 'teal'
-                    case '/sortear-numeros':
-                        return 'blue-grey'
-                    default:
-                        return 'blue-grey'
-                }
-            }
-        }
-    }
+  export default {
+    data() {
+      return {
+        bottomNav: '/sortear-numeros',
+        model: 'tab-1',
+        tabItems:
+          [
+            {
+              menuName: 'Sortear Números',
+              menuLink: '/sortear-numeros',
+            },
+            {
+              menuName: 'Sortear Nomes',
+              menuLink: '/sortear-nomes',
+            },
+            {
+              menuName: 'Sortear Amigo Secreto',
+              menuLink: '/sortear-amigo-secreto',
+            },
+          ]
+      }
+    },
+  }
 </script>
