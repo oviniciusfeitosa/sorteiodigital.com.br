@@ -65,7 +65,7 @@
       sortearNumeros: function () {
         if (this.numeroInicial != '' && this.numeroFinal != '') {
           let numeroInicial = parseInt(this.numeroInicial, 10);
-          let numeroFinal = parseInt(this.numeroFinal);
+          let numeroFinal = parseInt(this.numeroFinal, 10);
           if (numeroInicial > numeroFinal) {
             this.numeroSorteado = this.randomizarNumeros(numeroFinal, numeroInicial);
           } else {
