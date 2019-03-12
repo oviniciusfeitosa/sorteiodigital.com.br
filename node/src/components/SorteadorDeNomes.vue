@@ -4,16 +4,12 @@
             <v-flex xs12>
                 <v-layout align-center justify-center row fill-height>
                     <v-flex md12
-                            :key="plataforma.title"
-                            :v-for="grupoNome in this.grupoNomes">
-                        <v-text-field type="text"
-                                      label="Nome"
-                                      v-model="grupoNome.nome"
-                                      box></v-text-field>
+                            :v-for="(elemento) in this.grupoNomes">
+                        {{elemento.nome}}
                     </v-flex>
-                </v-layout>
-                <v-layout align-center justify-center row fill-height>
-                    <v-btn @click="adicionarElemento()"></v-btn>
+                    <v-flex md12>
+                        <v-btn @click="adicionarElemento()">Adicionar Nome</v-btn>
+                    </v-flex>
                 </v-layout>
             </v-flex>
 
@@ -25,21 +21,22 @@
   export default {
     data() {
       return {
-        grupoNomes: [{
-          nome: '',
-        }],
+        grupoNomes: [],
       };
     },
-    methods() {
+    methods: {
       adicionarElemento() {
         this.grupoNomes.push({
           nome: ''
         });
       },
-
+      removerElemento(elemento) {
+        var indice = this.grupoNomes.indexOf(elemento);
+        this.grupoNomes.splice(indice, 1);
+      },
     },
     mounted() {
-
+      this.adicionarElemento();
     }
   }
 </script>
