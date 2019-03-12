@@ -37,13 +37,11 @@
 </template>
 
 <script>
-    import Home from './components/Home'
     import GithubButton from 'vue-github-button'
 
     export default {
         name: 'App',
         components: {
-            Home,
             GithubButton
         },
         data() {
